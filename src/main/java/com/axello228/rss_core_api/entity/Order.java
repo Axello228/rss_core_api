@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -20,12 +21,12 @@ public class Order {
     private Long id;
 
     @Column(name = "customer_name", nullable = false, length = 100)
-    private String customerName;
+    private String name;
 
     @Column(name = "phone_number", nullable = false, length = 20)
-    private String phoneNumber;
+    private String phone;
 
     @Column(name = "order_date", nullable = false)
-    private LocalDateTime orderDate;
+    private LocalDateTime date;
 
 }
