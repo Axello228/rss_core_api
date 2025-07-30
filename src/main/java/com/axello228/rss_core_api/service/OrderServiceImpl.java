@@ -20,13 +20,14 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderDto> getAllOrders() {
-        List<Order> orders = orderRepo.findAll();
-        return orderMapper.toDtoList(orders);
+        return orderRepo.findAll().stream()
+                .map(orderMapper::toDto)
+                .toList();
     }
 
     @Override
     public void createOrder(OrderDto orderDto) {
-        Order order = orderMapper.toEntity(orderDto);
+        Order order = orderMapper.toEntity(orderDto); // mapstruct не работает
         order.setName(orderDto.getName());
         order.setPhone(orderDto.getPhone());
         order.setDate(LocalDateTime.now());
